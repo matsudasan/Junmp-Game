@@ -148,11 +148,33 @@ const JageHit = () => {
         ) {
             game.GameOver = true
             clearInterval(anime)
-            ctx.font = 'bold 100px serif'
-            ctx.fillText(`Game Over!`, 200, 200)
+
+            const text1 = 'Game Over!'
+            const fontsize1 = 100
+            ctx.font = `bold ${fontsize1}px serif`
+            const textWidth1 = ctx.measureText(text1).width
+            ctx.fillText(text1, (canvas.width - textWidth1) / 2, 200)
+
+            const text2 = 'キーを押してリスタート'
+            const fontsize2 = 30
+            ctx.font = `bold ${fontsize2}px serif`
+            const textWidth2 = ctx.measureText(text2).width
+            ctx.fillText(text2, (canvas.width - textWidth2) / 2, 230)
+
         }
     }
 }
+
+const ReSrart = () => {
+    game.GameOver = false
+    game.enemys = []
+    game.back = { x: 0, moveX: -10 }
+    game.human.y = canvas.height - game.human.height
+    game.human.moveY = 0
+    game.score = 0
+    anime = setInterval(Draw, 50)
+}
+
 const Draw = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     if (Math.floor(Math.random() * 120) === 0 || game.Aaronmeter >= 200) {
@@ -177,6 +199,9 @@ const Draw = () => {
 document.onkeydown = (event) => {
     if (event.key === ' ' && (game.human.y >= canvas.height - game.human.height)) {
         game.human.moveY = -70
+    }
+    if (game.GameOver) {
+        ReSrart()
     }
 }
 
