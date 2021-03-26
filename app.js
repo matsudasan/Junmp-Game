@@ -1,5 +1,6 @@
 const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d')
+let anime
 
 const srcs = {
     back: './img/背景.png',
@@ -53,6 +54,7 @@ const Init = async () => {
         game.images[key] = img
     }
     CreateHuman()
+    anime = setInterval(Draw, 50)
 }
 
 const DrawBack = () => {
@@ -206,4 +208,3 @@ document.onkeydown = (event) => {
 }
 
 Init()
-let anime = setInterval(Draw, 50)
