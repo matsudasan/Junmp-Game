@@ -188,11 +188,11 @@ const Draw = () => {
         CreatBird()
     }
 
+    JageHit()
     DrawBack()
     DrawEnemy()
     DrawHuman()
     DrawScore()
-    JageHit()
     game.Aaronmeter += 5
     game.birdmeter += 2
     game.score += 1
